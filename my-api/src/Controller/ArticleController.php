@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class ArticleController extends Controller
 {
     /**
-     * @Route("/article/{id}", name="article_show")
+     * @Route("/articles/{id}", name="article_show")
      */
     public function showAction($id)
     {
@@ -47,6 +47,7 @@ class ArticleController extends Controller
         $article = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Article', 'json');
 
         //On insert les infos dans la database
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($article);
         $em->flush();
