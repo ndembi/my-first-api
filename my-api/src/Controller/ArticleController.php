@@ -46,8 +46,7 @@ class ArticleController extends Controller
         //On recupère les données depuis le formulaire
         $data = $request->getContent();
         //On les décodent
-        $article = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Article', 'json',
-     SerializationContext::create()->setGroups(array('detail')));
+        $article = $this->get('jms_serializer')->deserialize($data, 'App\Entity\Article', 'json');
 
         //On insert les infos dans la database
 
