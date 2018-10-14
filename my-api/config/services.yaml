@@ -6,10 +6,15 @@
 parameters:
 
 services:
-    serializer_listener.article:
-        class: App\Controller\Serializer\Listener\ArticleListener
+    serializer_handler.article:
+        class: App\Controller\Serializer\Handler\ArticleHandler
         tags:
-            - { name: jms_serializer.event_subscriber }
+            - { name: jms_serializer.subscribing_handler }
+        
+    # serializer_listener.article:
+    #     class: App\Controller\Serializer\Listener\ArticleListener
+    #     tags:
+    #         - { name: jms_serializer.event_subscriber }
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
