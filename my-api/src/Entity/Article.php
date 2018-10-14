@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation\Type;
 
 /**
  * @ORM\Entity
@@ -12,7 +11,6 @@ use JMS\Serializer\Annotation\Type;
 class Article
 {
     /**
-     * @JMS\Serializer\Annotation\Type("integer")
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -20,13 +18,11 @@ class Article
     private $id;
 
     /**
-     * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="string", length=100)
      */
     private $title;
 
     /**
-     * @JMS\Serializer\Annotation\Type("string")
      * @ORM\Column(type="text")
      */
     private $content;
