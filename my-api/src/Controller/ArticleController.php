@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\Annotations\Post;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class ArticleController extends Controller
 {
@@ -25,5 +27,18 @@ class ArticleController extends Controller
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
-  
+
+     /**
+     * @Post("/articles")
+     * @View
+     * @ParamConverter("article", converter="fos_rest.request_body")
+     */
+    public function createAction(Article $article)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($article);
+        $em->flush();
+        var_dump($article); die;
+    }
+
 }
